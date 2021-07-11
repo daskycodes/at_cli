@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"main/cli"
 	"os"
+
+	"git.coco.study/dkhaapam/at_cli/cli"
 
 	tea "github.com/charmbracelet/bubbletea"
 )

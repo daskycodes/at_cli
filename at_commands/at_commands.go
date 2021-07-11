@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"main/serial_ports"
 	"time"
+
+	"git.coco.study/dkhaapam/at_cli/serial_ports"
 
 	"github.com/warthog618/modem/at"
 	"github.com/warthog618/modem/serial"

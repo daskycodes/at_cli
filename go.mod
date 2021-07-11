@@ -1,4 +1,4 @@
-module main
+module git.coco.study/dkhaapam/at_cli
 
 go 1.16
 
