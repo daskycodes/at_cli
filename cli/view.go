@@ -12,7 +12,7 @@ func (m Model) View() string {
 	mainView := m.MainView.Render(m)
 	footer := "\nPress q to quit.\n"
 
-	return header + information + mainView + footer + m.SelectedPort.Name
+	return header + information + mainView + footer
 }
 
 type MainView struct {
