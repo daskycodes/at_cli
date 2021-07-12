@@ -19,6 +19,14 @@ type AtCommand struct {
 func GetModemInfoCommands() []AtCommand {
 	return []AtCommand{
 		{"I", "Display product identification information."},
+		{"+GCAP", "Capabilities."},
+		{"+CGMI", "Request manufacturer identification."},
+		{"+CGMM", "Request model identification."},
+		{"+CGMR", "Request division identification."},
+		{"+CGSN", "Request product serial number identification."},
+		{"+CSQ", "Signal quality."},
+		{"+CIMI", "Request international mobile subscriber identity."},
+		{"+CLAC", "List all available AT commands."},
 	}
 }
 
