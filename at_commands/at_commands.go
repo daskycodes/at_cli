@@ -47,7 +47,7 @@ func (command AtCommand) Run(port serial_ports.SerialPort) []string {
 
 	info, err := a.Command(command.Command)
 	if err != nil {
-		return []string{fmt.Sprintf("Error: %e", err)}
+		return []string{fmt.Sprintf("Error: %s", err)}
 	}
 	return info
 }
