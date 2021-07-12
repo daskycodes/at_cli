@@ -46,7 +46,7 @@ var SerialPortView = MainView{
 }
 
 var AtCommandView = MainView{
-	Name: "AtCommndView",
+	Name: "AtCommandView",
 	Render: func(m Model) string {
 		var commandListString string
 		for i, command := range at_commands.GetModemInfoCommands() {
@@ -60,8 +60,25 @@ var AtCommandView = MainView{
 	},
 	Action: func(m Model) Model {
 		command := at_commands.GetModemInfoCommands()[m.Cursor]
-		command.Run(m.SelectedPort)
+		info := command.Run(m.SelectedPort)
+		m.AtCommandResult = info
+		m.MainView = AtCommandResultView
 		return m
 	},
 	ItemLength: len(at_commands.GetModemInfoCommands()),
+}
+
+var AtCommandResultView = MainView{
+	Name: "AtCommandResultView",
+	Render: func(m Model) string {
+		var resultString string
+		for _, l := range m.AtCommandResult {
+			resultString += fmt.Sprintf("%s\n", l)
+		}
+		return resultString
+	},
+	Action: func(m Model) Model {
+		return m
+	},
+	ItemLength: 0,
 }

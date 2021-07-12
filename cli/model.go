@@ -7,9 +7,10 @@ import (
 )
 
 type Model struct {
-	Cursor       int
-	SelectedPort serial_ports.SerialPort
-	MainView     MainView
+	Cursor          int
+	SelectedPort    serial_ports.SerialPort
+	MainView        MainView
+	AtCommandResult []string
 }
 
 var InitialModel = Model{
@@ -42,7 +43,11 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 		case "enter", " ":
 			m = m.MainView.Action(m)
+
+		case "b":
+			m.MainView = AtCommandView
 		}
+
 	}
 
 	return m, nil
