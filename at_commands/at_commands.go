@@ -16,6 +16,13 @@ type AtCommand struct {
 	Description string
 }
 
+var userInput string
+
+func UserInput() {
+	fmt.Println("Enter Your custom command")
+	fmt.Scanln(&userInput)
+}
+
 func GetModemInfoCommands() []AtCommand {
 	return []AtCommand{
 		{"I", "Display product identification information."},
@@ -27,6 +34,7 @@ func GetModemInfoCommands() []AtCommand {
 		{"+CSQ", "Signal quality."},
 		{"+CIMI", "Request international mobile subscriber identity."},
 		{"+CLAC", "List all available AT commands."},
+		{"+" + userInput, "User input command."},
 	}
 }
 
