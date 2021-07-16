@@ -4,6 +4,8 @@ import (
 	"git.coco.study/dkhaapam/at_cli/serial_ports"
 
 	tea "github.com/charmbracelet/bubbletea"
+
+	"github.com/charmbracelet/bubbles/textinput"
 )
 
 type Model struct {
@@ -11,17 +13,25 @@ type Model struct {
 	SelectedPort    serial_ports.SerialPort
 	MainView        MainView
 	AtCommandResult []string
+	textInput       textinput.Model
 }
 
-var InitialModel = Model{
-	MainView: SerialPortView,
+func InitialModel() Model {
+	ti := textinput.NewModel()
+	ti.Placeholder = "AT"
+	ti.CharLimit = 156
+	ti.Width = 20
+	return Model{
+		textInput: ti,
+		MainView:  SerialPortView,
+	}
 }
-
 func (m Model) Init() tea.Cmd {
 	return nil
 }
 
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+	var cmd tea.Cmd
 	switch msg := msg.(type) {
 
 	case tea.KeyMsg:
@@ -44,11 +54,17 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "enter", " ":
 			m = m.MainView.Action(m)
 
-		case "b":
+		case "esc":
 			m.MainView = AtCommandView
+			m.textInput.Blur()
+
+		case "ctrl+k":
+			m.MainView = CustomInputView
+			m.textInput.Focus()
 		}
 
 	}
 
-	return m, nil
+	m.textInput, cmd = m.textInput.Update(msg)
+	return m, cmd
 }
