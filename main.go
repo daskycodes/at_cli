@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	p := tea.NewProgram(cli.InitialModel)
+	p := tea.NewProgram(cli.InitialModel())
 	if err := p.Start(); err != nil {
 		fmt.Printf("There's been an error: %v", err)
 		os.Exit(1)

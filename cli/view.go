@@ -11,9 +11,10 @@ func (m Model) View() string {
 	header := "AT Command CLI\n\n"
 	information := fmt.Sprintf("Selected Serial Port: %s\n\n", m.SelectedPort.Name)
 	mainView := m.MainView.Render(m)
+	inputs := "\nPress CTRL + K for custom input\n"
 	footer := "\nPress q to quit.\n"
 
-	return header + information + mainView + footer
+	return header + information + mainView + inputs + footer
 }
 
 type MainView struct {
@@ -43,6 +44,22 @@ var SerialPortView = MainView{
 		return m
 	},
 	ItemLength: len(serial_ports.GetSerialPorts()),
+}
+
+var CustomInputView = MainView{
+	Name: "CustomInputView",
+	Render: func(m Model) string {
+		return fmt.Sprintf(
+			"Custom AT command: %s", m.textInput.View(),
+		)
+	}, Action: func(m Model) Model {
+		command := at_commands.AtCommand{Command: m.textInput.Value()}
+		info := command.Run(m.SelectedPort)
+		m.AtCommandResult = info
+		m.MainView = AtCommandResultView
+		m.textInput.Blur()
+		return m
+	},
 }
 
 var AtCommandView = MainView{
