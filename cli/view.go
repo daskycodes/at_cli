@@ -11,11 +11,11 @@ func (m Model) View() string {
 	header := "AT Command CLI\n\n"
 	information := fmt.Sprintf("Selected Serial Port: %s\n\n", m.SelectedPort.Name)
 	mainView := m.MainView.Render(m)
-	inputs := "\nPress CTRL + K for custom input\n"
+	inputs := "\nPress ctrl+k for custom input\n"
 	if m.SelectedPort.Name == "No Port Selected" {
 		inputs = "\n\n"
 	}
-	footer := "\nPress q to quit.\n"
+	footer := "\nPress ctrl+c to quit.\n"
 
 	return header + information + mainView + inputs + footer
 }
