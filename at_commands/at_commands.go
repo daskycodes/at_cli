@@ -32,7 +32,7 @@ func GetModemInfoCommands() []AtCommand {
 
 func (command AtCommand) Run(port serial_ports.SerialPort) []string {
 	baud := 115200
-	timeout := 400 * time.Millisecond
+	timeout := 1000 * time.Millisecond
 	modem, err := serial.New(serial.WithPort(port.Name), serial.WithBaud(baud))
 	if err != nil {
 		return []string{fmt.Sprintf("Error: %s", err)}

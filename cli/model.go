@@ -18,9 +18,10 @@ type Model struct {
 
 func InitialModel() Model {
 	ti := textinput.NewModel()
-	ti.Placeholder = "AT"
+	ti.Placeholder = "+CPIN?"
 	ti.CharLimit = 156
 	ti.Width = 20
+	ti.Prompt = "> AT"
 	return Model{
 		textInput:    ti,
 		MainView:     SerialPortView,
