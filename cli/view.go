@@ -12,6 +12,9 @@ func (m Model) View() string {
 	information := fmt.Sprintf("Selected Serial Port: %s\n\n", m.SelectedPort.Name)
 	mainView := m.MainView.Render(m)
 	inputs := "\nPress CTRL + K for custom input\n"
+	if m.SelectedPort.Name == "No Port Selected" {
+		inputs = "\n\n"
+	}
 	footer := "\nPress q to quit.\n"
 
 	return header + information + mainView + inputs + footer
@@ -50,7 +53,7 @@ var CustomInputView = MainView{
 	Name: "CustomInputView",
 	Render: func(m Model) string {
 		return fmt.Sprintf(
-			"Custom AT command: %s", m.textInput.View(),
+			"Custom AT command: %s\n", m.textInput.View(),
 		)
 	}, Action: func(m Model) Model {
 		command := at_commands.AtCommand{Command: m.textInput.Value()}

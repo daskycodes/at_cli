@@ -22,8 +22,9 @@ func InitialModel() Model {
 	ti.CharLimit = 156
 	ti.Width = 20
 	return Model{
-		textInput: ti,
-		MainView:  SerialPortView,
+		textInput:    ti,
+		MainView:     SerialPortView,
+		SelectedPort: serial_ports.SerialPort{Name: "No Port Selected"},
 	}
 }
 func (m Model) Init() tea.Cmd {
