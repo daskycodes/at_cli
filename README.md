@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img width="400" alt="logo" src="https://daskycodes.github.io/at_cli/at_cli.png">
+  <img width="400" alt="logo" src="https://raw.githubusercontent.com/daskycodes/at_cli/master/at_cli.png">
   <br>
   AT Command CLI
 </h1>
