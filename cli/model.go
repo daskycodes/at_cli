@@ -1,7 +1,7 @@
 package cli
 
 import (
-	"git.coco.study/dkhaapam/at_cli/serial_ports"
+	"github.com/daskycodes/at_cli/serial_ports"
 
 	tea "github.com/charmbracelet/bubbletea"
 

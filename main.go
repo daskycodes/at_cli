@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"git.coco.study/dkhaapam/at_cli/cli"
+	"github.com/daskycodes/at_cli/cli"
 
 	tea "github.com/charmbracelet/bubbletea"
 )

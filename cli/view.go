@@ -3,8 +3,8 @@ package cli
 import (
 	"fmt"
 
-	"git.coco.study/dkhaapam/at_cli/at_commands"
-	"git.coco.study/dkhaapam/at_cli/serial_ports"
+	"github.com/daskycodes/at_cli/at_commands"
+	"github.com/daskycodes/at_cli/serial_ports"
 )
 
 func (m Model) View() string {

@@ -1,4 +1,4 @@
-module git.coco.study/dkhaapam/at_cli
+module github.com/daskycodes/at_cli
 
 go 1.16
 
